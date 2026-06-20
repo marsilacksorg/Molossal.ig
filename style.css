@@ -33,6 +33,55 @@ body {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
+/* Apple Liquid Glass Button Effect */
+.apple-glass-btn {
+    position: relative;
+    overflow: hidden;
+    background: rgba(209, 0, 255, 0.15);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(209, 0, 255, 0.5);
+    box-shadow: 
+        0 8px 32px 0 rgba(209, 0, 255, 0.2),
+        inset 0 1px 1px rgba(255, 255, 255, 0.4), /* Top inner highlight */
+        inset 0 -2px 2px rgba(0, 0, 0, 0.2); /* Bottom inner shadow for depth */
+    transition: all 0.3s ease;
+}
+
+/* Glossy specular highlight on top half */
+.apple-glass-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.25), transparent);
+    pointer-events: none;
+    border-radius: 50px 50px 0 0;
+}
+
+/* Bright light refraction on bottom edge */
+.apple-glass-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.6), transparent);
+    pointer-events: none;
+}
+
+.apple-glass-btn:hover {
+    background: rgba(209, 0, 255, 0.3);
+    box-shadow: 
+        0 0 30px var(--neon-purple),
+        inset 0 1px 1px rgba(255, 255, 255, 0.6),
+        inset 0 -2px 2px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
 /* Background Ambient Lighting */
 .bg-blob {
     position: fixed;
@@ -116,14 +165,10 @@ h1, h2, h3 {
     color: var(--neon-purple);
 }
 .btn-nav {
-    background: var(--neon-purple);
-    color: #fff !important;
     padding: 8px 20px;
     border-radius: 50px;
     font-weight: 700 !important;
-}
-.btn-nav:hover {
-    box-shadow: 0 0 15px var(--neon-purple);
+    text-decoration: none;
     color: #fff !important;
 }
 
@@ -155,18 +200,11 @@ h1, h2, h3 {
 .btn-primary {
     display: inline-block;
     padding: 15px 40px;
-    background: var(--neon-purple);
     color: #fff;
     text-decoration: none;
     font-weight: 700;
     font-size: 1.1rem;
     border-radius: 50px;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(209, 0, 255, 0.3);
-}
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(209, 0, 255, 0.5);
 }
 
 /* Sections */
@@ -356,24 +394,13 @@ section {
     display: block;
     width: 100%;
     padding: 18px;
-    background: var(--neon-purple);
     color: #fff;
     text-decoration: none;
     font-weight: 800;
     font-size: 1.2rem;
     border-radius: 50px;
-    transition: all 0.3s ease;
     cursor: pointer;
     border: none;
-}
-.btn-buy:hover {
-    box-shadow: 0 0 30px var(--neon-purple);
-    transform: scale(1.02);
-}
-.disclaimer {
-    margin-top: 15px;
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.4);
 }
 
 /* Footer */
