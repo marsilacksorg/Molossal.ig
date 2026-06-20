@@ -43,12 +43,11 @@ body {
     border: 1px solid rgba(209, 0, 255, 0.5);
     box-shadow: 
         0 8px 32px 0 rgba(209, 0, 255, 0.2),
-        inset 0 1px 1px rgba(255, 255, 255, 0.4), /* Top inner highlight */
-        inset 0 -2px 2px rgba(0, 0, 0, 0.2); /* Bottom inner shadow for depth */
+        inset 0 1px 1px rgba(255, 255, 255, 0.4), 
+        inset 0 -2px 2px rgba(0, 0, 0, 0.2); 
     transition: all 0.3s ease;
 }
 
-/* Glossy specular highlight on top half */
 .apple-glass-btn::before {
     content: '';
     position: absolute;
@@ -61,7 +60,6 @@ body {
     border-radius: 50px 50px 0 0;
 }
 
-/* Bright light refraction on bottom edge */
 .apple-glass-btn::after {
     content: '';
     position: absolute;
@@ -249,17 +247,49 @@ section {
     border-color: var(--neon-purple);
     box-shadow: 0 0 25px rgba(209, 0, 255, 0.3);
 }
-.menu-header {
-    background: rgba(209, 0, 255, 0.1);
+
+/* New Top Bar Design */
+.menu-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     padding: 15px;
-    text-align: center;
     border-bottom: 1px solid var(--glass-border);
+    background: rgba(0,0,0,0.3);
+}
+.brand-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.menu-logo {
+    height: 30px;
+    width: auto;
+}
+.brand-text {
     font-family: 'Outfit', sans-serif;
-    font-weight: 700;
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: var(--neon-purple);
+    text-shadow: 0 0 10px var(--neon-purple);
+}
+.stats-area {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.4;
+}
+.menu-category-title {
+    padding: 10px 15px 5px;
+    font-size: 0.8rem;
     color: var(--neon-purple);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    font-weight: 700;
 }
+
 .menu-list {
     list-style: none;
     flex-grow: 1;
