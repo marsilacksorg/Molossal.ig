@@ -34,18 +34,31 @@
         <div class="hero-content">
             <h1 class="hero-title">ELEVATE YOUR <span class="highlight">MOVEMENT</span></h1>
             <p class="hero-subtitle">The ultimate premium menu built for Gorilla Tag copies. Unmatched performance, sleek overlay, and powerful mods.</p>
-            <a href="#purchase" class="btn-primary">Get Molossal.ig</a>
+            <a href="#showcase" class="btn-primary">Try The Demo</a>
         </div>
     </section>
 
-    <!-- Showcase Section -->
+    <!-- Interactive Demo Section -->
     <section id="showcase" class="showcase">
         <h2 class="section-title">Clean. Intuitive. <span class="highlight">Liquid Glass.</span></h2>
-        <div class="glass-panel showcase-panel">
-            <!-- Using the provided menu screenshot URL. See GitHub instructions below to make it permanent. -->
-            <img src="menu.logo" alt="Molossal.ig In-Game Menu" class="menu-preview" onerror="this.src='https://via.placeholder.com/800x450/000000/e0f7ff?text=Molossal+Menu+Preview'">
-            <div class="showcase-caption">
-                <p>Featuring an intuitive submenu system, real-time tooltips, and a completely transparent overlay.</p>
+        <p class="demo-instructions">Click the menu below and use your <strong>Arrow Keys</strong> to navigate. <br> Up/Down to scroll, Left/Right to toggle/change values, Enter to select.</p>
+        
+        <div class="demo-layout">
+            <!-- Interactive Menu Container -->
+            <div id="interactive-menu-wrapper" class="glass-panel" tabindex="0">
+                <div class="menu-header" id="menu-title">MAIN MENU</div>
+                <ul class="menu-list" id="menu-list"></ul>
+                <div class="menu-footer">
+                    <span id="menu-tooltip">Hover or select an option to see tooltips.</span>
+                </div>
+            </div>
+
+            <!-- Static Image Showcase -->
+            <div class="glass-panel showcase-panel">
+                <img src="menu.png" alt="Molossal.ig In-Game Menu" class="menu-preview" onerror="this.src='https://via.placeholder.com/800x450/100016/d100ff?text=Molossal+Menu+Preview'">
+                <div class="showcase-caption">
+                    <p>Featuring an intuitive submenu system, real-time tooltips, and a completely transparent overlay.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -56,11 +69,11 @@
         <div class="features-grid">
             <div class="glass-panel feature-card">
                 <h3>Movement Mods</h3>
-                <p>Advanced movement modifications including fly, speed, and hyper-jump capabilities. Tuned for maximum smoothness.</p>
+                <p>Advanced movement modifications including fly, speed, wall walk, and hyper-jump capabilities. Tuned for maximum smoothness.</p>
             </div>
             <div class="glass-panel feature-card">
-                <h3>Player & Computer</h3>
-                <p>Full control over your lobby. Player tagging, ESP, and remote computer execution right from your overlay.</p>
+                <h3>Player & Exploits</h3>
+                <p>Full control over your lobby. Player tagging, cosmetics spoofer, crash options, and remote computer execution.</p>
             </div>
             <div class="glass-panel feature-card">
                 <h3>Sleek Overlay</h3>
