@@ -223,6 +223,7 @@ function renderMenu() {
     data.forEach((option, index) => {
         const li = document.createElement('li');
         li.className = 'menu-option' + (index === selectedIndex ? ' active' : '');
+        li.dataset.index = index;
         
         let stateHtml = '';
         if (option.type === 'toggle') {
@@ -242,16 +243,6 @@ function renderMenu() {
             ${stateHtml}
         `;
 
-        // Mouse hover/click support
-        li.addEventListener('mouseenter', () => {
-            selectedIndex = index;
-            menuTooltip.innerText = option.tooltip || "";
-            renderMenu();
-        });
-        li.addEventListener('click', () => {
-            handleAction('Enter');
-        });
-
         menuList.appendChild(li);
     });
 
@@ -266,6 +257,28 @@ function renderMenu() {
         activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 }
+
+// Event Delegation to fix the tab/click bug
+menuList.addEventListener('mouseover', (e) => {
+    const li = e.target.closest('.menu-option');
+    if (li) {
+        const index = parseInt(li.dataset.index);
+        if (selectedIndex !== index) {
+            selectedIndex = index;
+            menuTooltip.innerText = menuData[currentMenu][index].tooltip || "";
+            renderMenu();
+        }
+    }
+});
+
+menuList.addEventListener('click', (e) => {
+    const li = e.target.closest('.menu-option');
+    if (li) {
+        const index = parseInt(li.dataset.index);
+        selectedIndex = index;
+        handleAction('Enter');
+    }
+});
 
 function navigateTo(target) {
     if (target === 'back') {
@@ -322,7 +335,7 @@ function handleAction(key) {
     }
 }
 
-// Event Listeners
+// Event Listener for Keyboard
 menuWrapper.addEventListener('keydown', (e) => {
     if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', 'Backspace', 'Escape'].includes(e.key)) {
         e.preventDefault();
