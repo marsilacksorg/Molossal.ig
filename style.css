@@ -1,0 +1,293 @@
+:root {
+    --bg-black: #000000;
+    --bg-dark: #050505;
+    --text-white: #ffffff;
+    --light-blue: #e0f7ff;
+    --glass-border: rgba(224, 247, 255, 0.15);
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --neon-blue: rgba(224, 247, 255, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Liquid Glass Global Utility */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Background Ambient Lighting */
+.bg-blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    opacity: 0.4;
+}
+.blob-1 {
+    width: 500px;
+    height: 500px;
+    background: #00477a;
+    top: -100px;
+    left: -100px;
+}
+.blob-2 {
+    width: 600px;
+    height: 600px;
+    background: #001f33;
+    bottom: -200px;
+    right: -150px;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: 'Outfit', sans-serif;
+}
+.highlight {
+    color: var(--light-blue);
+    text-shadow: 0 0 15px var(--neon-blue);
+}
+
+/* Navigation */
+.glass-nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    z-index: 100;
+}
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.nav-logo {
+    height: 40px;
+    width: auto;
+    border-radius: 50%;
+}
+.logo-text {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: var(--text-white);
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+.nav-links a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+.nav-links a:hover {
+    color: var(--light-blue);
+}
+.btn-nav {
+    background: var(--light-blue);
+    color: var(--bg-black) !important;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 700 !important;
+}
+.btn-nav:hover {
+    box-shadow: 0 0 15px var(--neon-blue);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+.hero-title {
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #e0f7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    font-weight: 300;
+}
+.btn-primary {
+    display: inline-block;
+    padding: 15px 40px;
+    background: var(--light-blue);
+    color: var(--bg-black);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(224, 247, 255, 0.3);
+}
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(224, 247, 255, 0.5);
+}
+
+/* Sections */
+section {
+    padding: 100px 20px;
+    text-align: center;
+}
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+/* Showcase */
+.showcase-panel {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 15px;
+}
+.menu-preview {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+}
+.showcase-caption {
+    padding: 20px;
+    color: var(--light-blue);
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.feature-card {
+    padding: 30px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--light-blue);
+}
+.feature-card h3 {
+    color: var(--light-blue);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+.feature-card p {
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+}
+
+/* Purchase Section */
+.purchase-card {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 50px;
+}
+.price-tag {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 20px 0;
+    color: var(--text-white);
+}
+.price-sub {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.5);
+}
+.purchase-features {
+    list-style: none;
+    text-align: left;
+    margin: 30px 0;
+    display: inline-block;
+}
+.purchase-features li {
+    margin-bottom: 10px;
+    color: rgba(255,255,255,0.8);
+}
+.btn-buy {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    background: var(--light-blue);
+    color: var(--bg-black);
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+.btn-buy:hover {
+    box-shadow: 0 0 30px var(--neon-blue);
+    transform: scale(1.02);
+}
+.disclaimer {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(0,0,0,0.5);
+    color: rgba(255,255,255,0.3);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title { font-size: 3rem; }
+    .section-title { font-size: 2rem; }
+    .nav-links { gap: 15px; }
+    .nav-links li:nth-child(2), .nav-links li:nth-child(3) { display: none; }
+}
