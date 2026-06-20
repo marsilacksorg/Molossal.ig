@@ -152,20 +152,20 @@ const menuData = {
     "Settings": [
         { DisplayName: "Colour Settings", type: "submenu", target: "ColourSettings", tooltip: "Colour Settings" },
         { DisplayName: "MenuPosition", type: "slider", options: ["Top Left", "Middle", "Top Right"], tooltip: "Menu Position" },
-        { DisplayName: "Config", type: "slider", options: ["Empty"], tooltip: "Config Slot" },
-        { DisplayName: "Load Config", type: "button", tooltip: "Load Config" },
-        { DisplayName: "Save Config", type: "button", tooltip: "Save Config" },
+        { DisplayName: "Config", type: "slider", options: ["NewConfig_0 [1/2]"], tooltip: "Config Slot" },
+        { DisplayName: "Load", type: "button", tooltip: "Load Config" },
+        { DisplayName: "Save", type: "button", tooltip: "Save Config" },
         { DisplayName: "Player Logging", type: "toggle", tooltip: "Player Logging" },
         { DisplayName: "Inverted Controls", type: "toggle", tooltip: "Inverted Controls" },
         { DisplayName: "Log Out", type: "button", tooltip: "Log Out" },
-        { DisplayName: "<- Back", type: "submenu", target: "back", tooltip: "Go Back" }
+        { DisplayName: "Back", type: "submenu", target: "back", tooltip: "Go Back" }
     ],
     "Info": [
         { DisplayName: "PlayerList", type: "label", tooltip: "View Player List" },
         { DisplayName: "GTC Ranked Codes", type: "label", tooltip: "View GTC Ranked Codes" },
         { DisplayName: "JUPITERX Menu Users", type: "label", tooltip: "View JUPITERX Users" },
         { DisplayName: "MCMV2 Menu Users", type: "label", tooltip: "View MCMV2 Users" },
-        { DisplayName: "<- Back", type: "submenu", target: "back", tooltip: "Go Back" }
+        { DisplayName: "Back", type: "submenu", target: "back", tooltip: "Go Back" }
     ],
     "MusicPlayer": [
         { DisplayName: "Music", type: "slider", options: ["Empty"], tooltip: "Select Music" },
@@ -175,7 +175,7 @@ const menuData = {
         { DisplayName: "Loop Music", type: "toggle", tooltip: "Loop Music" },
         { DisplayName: "Sound Board", type: "toggle", tooltip: "Sound Board" },
         { DisplayName: "Volume", type: "slider", options: ["100%", "90%", "80%", "70%", "60%", "50%", "40%", "30%", "20%", "10%"], tooltip: "Music Volume" },
-        { DisplayName: "<- Back", type: "submenu", target: "back", tooltip: "Go Back" }
+        { DisplayName: "Back", type: "submenu", target: "back", tooltip: "Go Back" }
     ],
     "ColourSettings": [
         { DisplayName: "MenuColour", type: "slider", options: ["Purple", "Red", "Yellow", "Green", "Blue"], tooltip: "Menu Colour" },
@@ -186,7 +186,7 @@ const menuData = {
         { DisplayName: "HitBoxes Opacity", type: "slider", options: ["100%", "80%", "60%", "30%", "20%", "0%"], tooltip: "HitBox Opacity" },
         { DisplayName: "HitBoxes Colour", type: "slider", options: ["Purple", "Red", "Yellow", "Green", "Blue"], tooltip: "HitBox Colour" },
         { DisplayName: "Platforms Colour", type: "slider", options: ["Purple", "Red", "Yellow", "Green", "Blue"], tooltip: "Platforms Colour" },
-        { DisplayName: "<- Back", type: "submenu", target: "back", tooltip: "Go Back" }
+        { DisplayName: "Back", type: "submenu", target: "back", tooltip: "Go Back" }
     ]
 };
 
@@ -203,9 +203,9 @@ const menuWrapper = document.getElementById('interactive-menu-wrapper');
 
 function getState(menuName, index, option) {
     const key = `${menuName}.${index}`;
-    if (!optionStates[key]) {
+    if (optionStates[key] === undefined) {
         if (option.type === 'toggle') optionStates[key] = false;
-        if (option.type === 'slider') optionStates[key] = 0; // Default to first option (usually OFF)
+        if (option.type === 'slider') optionStates[key] = 0; // Default to first option
     }
     return optionStates[key];
 }
@@ -217,7 +217,9 @@ function setState(menuName, index, option, value) {
 
 function renderMenu() {
     const data = menuData[currentMenu];
-    menuTitle.innerText = currentMenu.toUpperCase().replace(/([A-Z])/g, ' $1').trim();
+    // Clean up title formatting (e.g., "MainMenu" -> "MAIN MENU", "Movement2" -> "MOVEMENT 2")
+    let titleText = currentMenu.replace(/([A-Z])/g, ' $1').replace("2", " 2").trim().toUpperCase();
+    menuTitle.innerText = titleText;
     menuList.innerHTML = '';
 
     data.forEach((option, index) => {
@@ -232,11 +234,8 @@ function renderMenu() {
         } else if (option.type === 'slider') {
             const valIdx = getState(currentMenu, index, option);
             stateHtml = `<span class="state">[${option.options[valIdx]}]</span>`;
-        } else if (option.type === 'submenu') {
-            stateHtml = `<span class="state">></span>`;
-        } else if (option.type === 'button') {
-            stateHtml = `<span class="state">[CLICK]</span>`;
-        }
+        } 
+        // Removed the [CLICK] and > text to match the clean screenshot design
 
         li.innerHTML = `
             <div class="name">${option.DisplayName} ${option.extra ? `<span class="extra">${option.extra}</span>` : ''}</div>
